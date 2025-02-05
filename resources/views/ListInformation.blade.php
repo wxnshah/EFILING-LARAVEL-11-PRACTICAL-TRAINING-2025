@@ -17,7 +17,7 @@ $submenu = "Senarai Informasi";
                             <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ $subpage }}</a></li>
                             <li class="breadcrumb-item active">{{ $submenu }}</li>
                         </ol>
-                        
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -29,6 +29,7 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <th>Bil</th>
                                             <th>Nama</th>
+                                            <th>Gambar</th>
                                             <th>Jantina</th>
                                             <th>No Matrik</th>
                                             <th>Tarikh Lapor Diri</th>
@@ -41,6 +42,7 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <th>Bil</th>
                                             <th>Nama</th>
+                                            <th>Gambar</th>
                                             <th>Jantina</th>
                                             <th>No Matrik</th>
                                             <th>Tarikh Lapor Diri</th>
@@ -54,6 +56,7 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $data_info->name }}</td>
+                                            <td><a href="{{ $data_info->image }}" target="_blank"><img src="{{ $data_info->image }}" width="150"></a></td>
                                             <td>{{ $data_info->name_gender }}</td>
                                             <td>{{ $data_info->no_matrik }}</td>
                                             <td>{{ $data_info->tarikh_lapor }}</td>

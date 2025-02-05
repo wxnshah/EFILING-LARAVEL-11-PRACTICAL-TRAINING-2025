@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_info', function (Blueprint $table) {
             $table->id('id_info');
+            $table->mediumText('image')->nullable();
             $table->smallInteger('id_user');
             $table->smallInteger('id_gender');
             $table->string('no_matrik', 50);

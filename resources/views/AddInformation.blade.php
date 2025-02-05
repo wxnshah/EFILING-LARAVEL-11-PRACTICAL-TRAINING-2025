@@ -28,7 +28,11 @@ $submenu = "Tambah Informasi";
                                 <form class="needs-validation" novalidate action="{{ route('PostAddInformation') }}" enctype="multipart/form-data" method="POST" onSubmit="return capture();">
                                     @csrf
                                     <div class="form-group row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-3">
+                                            <label>Nama Penuh</label>
+                                            <input type="file" class="form-control" placeholder="Sila Masukkan Gambar" name="image" >
+                                        </div>
+                                        <div class="form-group col-md-3">
                                             <label>Nama Penuh</label>
                                             <input type="text" class="form-control" placeholder="Sila Masukkan Nama Penuh" value="{{ Auth::user()->name }}" readonly>
                                         </div>
