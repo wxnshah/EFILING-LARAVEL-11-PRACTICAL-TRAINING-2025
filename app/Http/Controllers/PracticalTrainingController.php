@@ -19,8 +19,29 @@ class PracticalTrainingController extends Controller
 
     public function PostAddInformation(ValidationInformation $request){
 
+        // $destinationPath = public_path('assets/uploads/');
+
+        // // Handle the image upload
+        // if ($request->hasFile('image')) {
+        //     $file = $request->file('image');
+        //     $fileName = time() . '_' . $file->getClientOriginalName(); // Unique file name
+        //     $file->move($destinationPath, $fileName); // Move file to public/assets/uploads/{date}
+
+        //     // Save relative path in the database
+        //     $imagePath = 'assets/uploads/' . $fileName;
+        // } else {
+        //     $imagePath = null;
+        // }
+
+        $file = $request->file('image');
+        $base64Image = base64_encode(file_get_contents($file));
+        // $Base = new Base64ToUploadedFile($request->base64file);
+        // $Base = new Base64ToUploadedFile($request->file('image'));
+        // $fullpath = $Base->getFullPath();
+
         $data = [
             'id_user' => Auth::user()->id,
+            'image' => "data:image/jpeg;base64,".$base64Image,
             'id_gender' => $request->input('id_gender'),
             'no_matrik' => $request->input('no_matrik'),
             'tarikh_lapor' => $request->input('tarikh_lapor'),
