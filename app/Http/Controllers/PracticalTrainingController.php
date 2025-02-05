@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ValidationInformation;
-use th3khan\Base64ToUploadedFile\Base64ToUploadedFile;
 
 class PracticalTrainingController extends Controller
 {
