@@ -28,8 +28,8 @@ $submenu = "Senarai Informasi";
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
-                                            <th>Nama</th>
                                             <th>Gambar</th>
+                                            <th>Nama</th>
                                             <th>Jantina</th>
                                             <th>No Matrik</th>
                                             <th>Tarikh Lapor Diri</th>
@@ -41,8 +41,8 @@ $submenu = "Senarai Informasi";
                                     <tfoot>
                                         <tr>
                                             <th>Bil</th>
-                                            <th>Nama</th>
                                             <th>Gambar</th>
+                                            <th>Nama</th>
                                             <th>Jantina</th>
                                             <th>No Matrik</th>
                                             <th>Tarikh Lapor Diri</th>
@@ -55,8 +55,12 @@ $submenu = "Senarai Informasi";
                                         @foreach($query_info as $data_info)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <a href="{{ $data_info->image }}" target="_blank">
+                                                    <img src="{{ $data_info->image }}" class="rounded-circle img-fluid" style="width: 70px; height: 70px; object-fit: cover;">
+                                                </a>
+                                            </td>
                                             <td>{{ $data_info->name }}</td>
-                                            <td><a href="{{ $data_info->image }}" target="_blank"><img src="{{ $data_info->image }}" width="150"></a></td>
                                             <td>{{ $data_info->name_gender }}</td>
                                             <td>{{ $data_info->no_matrik }}</td>
                                             <td>{{ $data_info->tarikh_lapor }}</td>

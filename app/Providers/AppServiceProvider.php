@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
             $query_info = DB::table('tb_info')
             ->select(
+                'tb_info.image',
                 'tb_info.id_info',
                 'tb_info.id_user',
                 'users.name',
@@ -64,6 +65,7 @@ class AppServiceProvider extends ServiceProvider
 
             $data_info = DB::table('tb_info')
             ->select(
+                'tb_info.image',
                 'tb_info.id_info',
                 'tb_info.id_user',
                 'users.name',
