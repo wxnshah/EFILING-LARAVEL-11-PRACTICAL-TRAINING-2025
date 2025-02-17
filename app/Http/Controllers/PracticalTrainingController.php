@@ -81,12 +81,14 @@ class PracticalTrainingController extends Controller
 
         //     $file = $request->file('image');
 
-        //     File::delete($destinationPath.$data_info->image);
+        //     File::delete(public_path($data_info->image));
 
         //     $fileName = time() . '_' . $file->getClientOriginalName();
         //     $file->move($destinationPath, $fileName);
         //     $imagePath = 'assets/uploads/' . $fileName;
             
+        // } else {
+        //     $imagePath = null;
         // }
 
         $file = $request->file('image');
