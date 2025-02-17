@@ -36,12 +36,10 @@ class PracticalTrainingController extends Controller
 
         $file = $request->file('image');
         $base64Image = base64_encode(file_get_contents($file));
-        // $Base = new Base64ToUploadedFile($request->base64file);
-        // $Base = new Base64ToUploadedFile($request->file('image'));
-        // $fullpath = $Base->getFullPath();
 
         $data = [
             'id_user' => Auth::user()->id,
+            // 'image' => $imagePath,
             'image' => "data:image/jpeg;base64,".$base64Image,
             'id_gender' => $request->input('id_gender'),
             'no_matrik' => $request->input('no_matrik'),
@@ -69,8 +67,35 @@ class PracticalTrainingController extends Controller
 
     public function PostUpdateInformation(ValidationInformation $request, $id_info){
 
+        // $destinationPath = public_path('assets/uploads/');
+
+        // $data_info = DB::table('tb_info')
+        //     ->select(
+        //         'image',
+        //         'id_info',
+        //     )
+        //     ->where('id_info', $id_info)
+        //     ->first();
+
+        // if($request->hasFile('image')){
+
+        //     $file = $request->file('image');
+
+        //     File::delete($destinationPath.$data_info->image);
+
+        //     $fileName = time() . '_' . $file->getClientOriginalName();
+        //     $file->move($destinationPath, $fileName);
+        //     $imagePath = 'assets/uploads/' . $fileName;
+            
+        // }
+
+        $file = $request->file('image');
+        $base64Image = base64_encode(file_get_contents($file));
+
         $data = [
             'id_user' => Auth::user()->id,
+            // 'image' => $imagePath,
+            'image' => "data:image/jpeg;base64,".$base64Image,
             'id_gender' => $request->input('id_gender'),
             'no_matrik' => $request->input('no_matrik'),
             'tarikh_lapor' => $request->input('tarikh_lapor'),
