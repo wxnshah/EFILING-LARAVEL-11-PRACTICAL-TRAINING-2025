@@ -96,17 +96,11 @@
 								</div> Laman Utama
 							</a>
 
-							<div class="sb-sidenav-menu-heading">Maklumat</div>
-							<a class="nav-link" href="{{ route('AddInformation') }}">
-								<div class="sb-nav-link-icon">
-									<i class="fa-sharp-duotone fa-solid fa-layer-plus"></i>
-								</div> Tambah Maklumat
-							</a>
-							<a class="nav-link" href="{{ route('ListInformation') }}">
-								<div class="sb-nav-link-icon">
-									<i class="fa-sharp-duotone fa-solid fa-layer-group"></i>
-								</div> Senarai Maklumat
-							</a>
+							@if (Auth::user()->id_level == 1)
+								@include('headeruser_admin')
+							@else
+								@include('headeruser_staff')
+							@endif
 
 							<div class="sb-sidenav-menu-heading">Session</div>
 							<a class="nav-link" href="{{ route('Logout') }}" onClick="return logoutask();">

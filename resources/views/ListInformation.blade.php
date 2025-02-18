@@ -1,6 +1,6 @@
 <?php
 //*---------------------------------------------------------
-//* System : PracticalTraining
+//* System : Sistem eFiling
 //* FILENAME : ListInformation.blade.php
 //* Author : MUHAMAD IKHWAN
 //* --------------------------------------------------------
@@ -12,7 +12,7 @@ $submenu = "Senarai Informasi";
 @include('sweetalerts')
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">{{ $page }}</h1>
+                        <h1 class="mt-4">{{ $submenu }}</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ $subpage }}</a></li>
                             <li class="breadcrumb-item active">{{ $submenu }}</li>
@@ -29,12 +29,10 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <th>Bil</th>
                                             <th>Gambar</th>
+                                            <th>Nama Fail</th>
+                                            <th width="15%">Jabatan</th>
                                             <th>Nama</th>
-                                            <th>Jantina</th>
-                                            <th>No Matrik</th>
-                                            <th>Tarikh Lapor Diri</th>
-                                            <th>Kursus</th>
-                                            <th>IPTA / Universiti</th>
+                                            <th>Tarikh Serah Fail</th>
                                             <th>Kemaskini</th>
                                         </tr>
                                     </thead>
@@ -42,12 +40,10 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <th>Bil</th>
                                             <th>Gambar</th>
+                                            <th>Nama Fail</th>
+                                            <th width="15%">Jabatan</th>
                                             <th>Nama</th>
-                                            <th>Jantina</th>
-                                            <th>No Matrik</th>
-                                            <th>Tarikh Lapor Diri</th>
-                                            <th>Kursus</th>
-                                            <th>IPTA / Universiti</th>
+                                            <th>Tarikh Serah Fail</th>
                                             <th>Kemaskini</th>
                                         </tr>
                                     </tfoot>
@@ -56,16 +52,24 @@ $submenu = "Senarai Informasi";
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <a href="{{ $data_info->image }}" target="_blank">
-                                                    <img src="{{ $data_info->image }}" class="rounded-circle img-fluid" style="width: 70px; height: 70px; object-fit: cover;">
+                                                @if($data_info->image != "" && $data_info->image != NULL)
+                                                    <a href="{{ $data_info->image }}" target="_blank">
+                                                        <img src="{{ $data_info->image }}" class="rounded-circle img-fluid" style="width: 90px; height: 90px; object-fit: cover;">
+                                                    </a>                                                    
+                                                @else
+                                                    <a href="{{ asset('assets/img/user.png') }}" target="_blank">
+                                                        <img src="{{ asset('assets/img/user.png') }}" class="rounded-circle img-fluid" style="width: 90px; height: 90px; object-fit: cover;">
+                                                    </a>  
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ $data_info->nama_fail }}" target="_blank">
+                                                    {{ Str::after(basename($data_info->nama_fail), '_') }}
                                                 </a>
                                             </td>
+                                            <td>{{ $data_info->name_department }}</td>
                                             <td>{{ $data_info->name }}</td>
-                                            <td>{{ $data_info->name_gender }}</td>
-                                            <td>{{ $data_info->no_matrik }}</td>
-                                            <td>{{ $data_info->tarikh_lapor }}</td>
-                                            <td>{{ $data_info->name_course }}</td>
-                                            <td>{{ $data_info->name_ipta }}</td>
+                                            <td>{{ $data_info->tarikh_fail }}</td>
                                             <td>
                                                 <a href="{{ route('UpdateInformation', $data_info->id_info) }}"><i class="fa-sharp-duotone fa-solid fa-pen-to-square fa-2x"></i></a>
                                                 &nbsp;&nbsp;

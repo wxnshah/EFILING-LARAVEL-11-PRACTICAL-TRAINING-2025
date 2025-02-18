@@ -22,22 +22,20 @@ class ValidationInformation extends FormRequest
     public function rules(): array
     {
         return [
-            'id_gender' => ['required'],
-            'no_matrik' => ['required'],
-            'tarikh_lapor' => ['required'],
-            'id_course' => ['required'],
-            'id_ipta' => ['required'],
+            'image' => ['mimes:png,jpg,jpeg'],
+            'nama_fail' => ['mimes:pdf,doc,docx,ppt,pptx,xls,xlsx'],
+            'id_department' => ['required'],
+            'tarikh_fail' => ['required'],
         ];
     }
     
     public function messages(): array
     {
         return [
-            'id_gender' => "Sila Pilih Jantina !",
-            'no_matrik' => "Sila Masukkan No Matrik !",
-            'tarikh_lapor' => "Sila Masukkan Tarikh Lapor Diri !",
-            'id_course' => "Sila Pilih Kursus !",
-            'id_ipta' => "Sila Pilih IPTA / Universiti !",
+            'image.mimes' => "Hanya Masukkan Jenis Fail Format (.png, .jpg, .jpeg) Sahaja !",
+            'nama_fail.mimes' => "Hanya Masukkan Jenis Fail Format (.pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx) Sahaja !",
+            'id_department.required' => "Sila Pilih Jabatan !",
+            'tarikh_fail' => "Sila Masukkan Tarikh Serah Fail !",
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 //*---------------------------------------------------------
-//* System : PracticalTraining
+//* System : Sistem eFiling
 //* FILENAME : UpdateInformation.blade.php
 //* Author : MUHAMAD IKHWAN
 //* --------------------------------------------------------
@@ -13,7 +13,7 @@ $submenu = "Kemaskini Informasi";
                 <main>
                     <div class="container-fluid px-4">
 
-                        <h1 class="mt-4">{{ $page }}</h1>
+                        <h1 class="mt-4">{{ $submenu }}</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ $subpage }}</a></li>
                             <li class="breadcrumb-item active">{{ $submenu }}</li>
@@ -30,60 +30,48 @@ $submenu = "Kemaskini Informasi";
                                     @method('PUT')
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
+                                            {{-- @if($data_info->image != "" && $data_info->image != NULL)
+                                                <img src="{{ $data_info->image }}" class="rounded-circle img-fluid mb-2" style="width: 70px; height: 70px; object-fit: cover;">                                                  
+                                            @else
+                                                <img src="{{ asset('assets/img/user.png') }}" class="rounded-circle img-fluid mb-2" style="width: 70px; height: 70px; object-fit: cover;">
+                                            @endif --}}
+                                            <label>Gambar</label>
+                                            <input type="file" class="form-control" placeholder="Sila Masukkan Gambar" name="image" >
+                                            @error('image')
+                                                <font color="red">{{ $message }}</font>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Nama Fail (Fail Sedia Ada : {{ Str::after(basename($data_info->nama_fail), '_') }})</label>
+                                            <input type="file" class="form-control" placeholder="Sila Masukkan Gambar" name="nama_fail" >
+                                            @error('nama_fail')
+                                                <font color="red">{{ $message }}</font>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="form-group col-md-6">
                                             <label>Nama Penuh</label>
                                             <input type="text" class="form-control" placeholder="Sila Masukkan Nama Penuh" value="{{ Auth::user()->name }}" readonly>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Jantina</label>
-                                            <select class="form-control select2" name="id_gender">
-                                                <option value="">Sila Pilih Jantina</option>
-                                                @foreach ($query_gender as $data_gender)
-                                                    <option value="{{ $data_gender->id_gender }}" {{ $data_gender->id_gender == $data_info->id_gender ? "selected" : "" }}>{{ $data_gender->name_gender }}</option>
+                                            <label>Jabatan</label>
+                                            <select class="form-control select2" name="id_department">
+                                                <option value="">Sila Pilih Jabatan</option>
+                                                @foreach ($query_department as $data_department)
+                                                    <option value="{{ $data_department->id_department }}" {{ $data_department->id_department == $data_info->id_department ? "selected" : "" }}>{{ $data_department->name_department }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('id_gender')
+                                            @error('id_department')
                                                 <font color="red">{{ $message }}</font>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
-                                            <label>No Matrik</label>
-                                            <input type="text" class="form-control" placeholder="Sila Masukkan No Matrik" name="no_matrik" value="{{ $data_info->no_matrik }}">
-                                            @error('no_matrik')
-                                                <font color="red">{{ $message }}</font>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Tarikh Lapor Diri</label>
-                                            <input type="text" class="form-control datepicker" placeholder="Sila Masukkan Tarikh Lapor Diri" name="tarikh_lapor" value="{{ $data_info->tarikh_lapor }}">
-                                            @error('tarikh_lapor')
-                                                <font color="red">{{ $message }}</font>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="form-group col-md-6">
-                                            <label>Kursus</label>
-                                            <select class="form-control select2" name="id_course">
-                                                <option value="">Sila Pilih Kursus</option>
-                                                @foreach ($query_course as $data_course)
-                                                    <option value="{{ $data_course->id_course }}" {{ $data_course->id_course == $data_info->id_course ? "selected" : "" }}>{{ $data_course->name_course }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('id_course')
-                                                <font color="red">{{ $message }}</font>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>IPTA / UNIVERSITI</label>
-                                            <select class="form-control select2" name="id_ipta">
-                                                <option value="">Sila Pilih IPTA / UNIVERSITI</option>
-                                                @foreach ($query_ipta as $data_ipta)
-                                                    <option value="{{ $data_ipta->id_ipta }}" {{ $data_ipta->id_ipta == $data_info->id_ipta ? "selected" : "" }}>{{ $data_ipta->name_ipta }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('id_ipta')
+                                            <label>Tarikh Serah Fail</label>
+                                            <input type="text" class="form-control datepicker" placeholder="Sila Masukkan Tarikh Serah Fail" name="tarikh_fail" value="{{ $data_info->tarikh_fail }}">
+                                            @error('tarikh_fail')
                                                 <font color="red">{{ $message }}</font>
                                             @enderror
                                         </div>

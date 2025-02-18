@@ -20,10 +20,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/v6.7.2/sharp-duotone-regular.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/v6.7.2/sharp-duotone-solid.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/v6.7.2/sharp-duotone-thin.css') }}" />
-        <script src="{{ asset('js/jquery-3.7.1.js') }}"></script>
+
         <!-- SweetAlert2 -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}"/>
         <!-- End SweetAlert2 -->
+
+        <script src="{{ asset('js/jquery-3.7.1.js') }}"></script>
     </head>
     @include('sweetalerts')
     <body class="bg-primary">
@@ -113,6 +115,7 @@
         </div>
         <script src="{{ asset('js/bootstrap@5.2.3/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+
         <!-- Sweet Alerts js -->
         <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
         <!-- Sweet Alerts js ends --> 

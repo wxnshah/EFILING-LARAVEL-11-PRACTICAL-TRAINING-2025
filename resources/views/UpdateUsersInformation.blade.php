@@ -1,12 +1,12 @@
 <?php
 //*---------------------------------------------------------
 //* System : Sistem eFiling
-//* FILENAME : AddInformation.blade.php
+//* FILENAME : UpdateUsersInformation.blade.php
 //* Author : MUHAMAD IKHWAN
 //* --------------------------------------------------------
-$page = "Maklumat";
-$subpage = "Maklumat";
-$submenu = "Tambah Informasi";
+$page = "Pengguna";
+$subpage = "Pengguna";
+$submenu = "Kemaskini Maklumat Pengguna";
 ?>
 @include('headeruser')
 @include('sweetalerts')
@@ -25,54 +25,44 @@ $submenu = "Tambah Informasi";
                                 {{ $submenu }}
                             </div>
                             <div class="card-body">
-                                <form class="needs-validation" novalidate action="{{ route('PostAddInformation') }}" enctype="multipart/form-data" method="POST" onSubmit="return capture();">
+                                <form class="needs-validation" novalidate action="{{ route('PostAdminUpdateUsersInformation', $id_user) }}" enctype="multipart/form-data" method="POST" onSubmit="return capture();">
                                     @csrf
-                                    <div class="form-group row">
-                                        <div class="form-group col-md-6">
-                                            <label>Gambar</label>
-                                            <input type="file" class="form-control" placeholder="Sila Masukkan Gambar" name="image" >
-                                            @error('image')
-                                                <font color="red">{{ $message }}</font>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Fail</label>
-                                            <input type="file" class="form-control" placeholder="Sila Masukkan Fail" name="nama_fail" >
-                                            @error('nama_fail')
-                                                <font color="red">{{ $message }}</font>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    @method('PUT')
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
                                             <label>Nama Penuh</label>
-                                            <input type="text" class="form-control" placeholder="Sila Masukkan Nama Penuh" name="name" value="{{ Auth::user()->name }}" readonly>
+                                            <input type="text" class="form-control" placeholder="Sila Masukkan Nama Penuh" name="name" value="{{ $data_user->name }}">
+                                            @error('nama')
+                                                <font color="red">{{ $message }}</font>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Jabatan</label>
-                                            <select class="form-control select2" name="id_department">
-                                                <option value="">Sila Pilih Jabatan</option>
-                                                @foreach ($query_department as $data_department)
-                                                    <option value="{{ $data_department->id_department }}" {{ $data_department->id_department == old('id_department') ? "selected" : "" }}>{{ $data_department->name_department }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('id_department')
+                                            <label>No Kad Pengenalan</label>
+                                            <input type="text" class="form-control" placeholder="Sila Masukkan No Kad Pengenalan" name="no_kp" value="{{ $data_user->no_kp }}">
+                                            @error('no_kp')
                                                 <font color="red">{{ $message }}</font>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
-                                            <label>Tarikh Serah Fail</label>
-                                            <input type="text" class="form-control datepicker" placeholder="Sila Masukkan Tarikh Serah Fail" name="tarikh_fail" value="{{ old('tarikh_fail') }}">
-                                            @error('tarikh_fail')
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" placeholder="Sila Masukkan Email" name="email" value="{{ $data_user->email }}">
+                                            @error('email')
+                                                <font color="red">{{ $message }}</font>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Kata Laluan <font color="red"><small>*(Tinggalkan kosong jika tidak menukar kata laluan)</small></font></label>
+                                            <input type="password" class="form-control" placeholder="Sila Masukkan Kata Laluan" name="password">
+                                            @error('password')
                                                 <font color="red">{{ $message }}</font>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 mt-3" style="text-align: left;">
-                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                            <button type="submit" class="btn btn-primary">Kemaskini</button>
                                         </div>
                                     </div>
                                 </form>

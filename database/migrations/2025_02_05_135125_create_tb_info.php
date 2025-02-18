@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('tb_info', function (Blueprint $table) {
             $table->id('id_info');
             $table->mediumText('image')->nullable();
-            $table->smallInteger('id_user');
-            $table->smallInteger('id_gender');
-            $table->string('no_matrik', 50);
-            $table->string('tarikh_lapor', 20);
-            $table->smallInteger('id_course');
-            $table->smallInteger('id_ipta');
+            $table->string('nama_fail', 100)->nullable();
+            $table->string('id_user');
+            $table->smallInteger('id_department');
+            $table->string('tarikh_fail', 20);
             $table->string('created_by')->nullable();
             $table->timestamps();
             $table->string('updated_by')->nullable();

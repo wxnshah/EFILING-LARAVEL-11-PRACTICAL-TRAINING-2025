@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function LoginPage(){
         if (Auth::check()) {
-            if(Auth::user()->user_level == 1){
+            if(Auth::user()->id_level == 1){
                 return redirect()->route('AdminDashboard');
             } else {
                 return redirect()->route('Dashboard');
@@ -38,11 +38,11 @@ class AuthController extends Controller
 
             // Jika semua OK, generate session login dan redirect ke dashboard
             $request->session()->regenerate();
-            if (Auth::user()->user_level == 1) {
+            if (Auth::user()->id_level == 1) {
                 return redirect()->route('AdminDashboard');
-            } elseif (in_array(Auth::user()->user_level, [2, 3, 4, 5])) {
+            } elseif (in_array(Auth::user()->id_level, [2, 3, 4, 5])) {
                 return redirect()->route('Dashboard');
-            }
+            } 
         }
 
         // Jika tak OK, redirect ke login semula dengan info error
@@ -65,6 +65,7 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'password' => $encrypt,
             'id_level' => 2,
+            'created_at' => now()
         ];
     
         DB::table('users')->insert($data);

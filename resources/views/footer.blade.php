@@ -39,7 +39,7 @@
 		<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 		<!-- Sweet Alerts js ends -->
 		
-		<script src="js/chartjs/chart.min.js"></script>
+		<script src="{{ asset('js/chartjs/chart.min.js') }}"></script>
 		<script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
 		<script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>
 	</body>
