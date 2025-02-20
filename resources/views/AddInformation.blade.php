@@ -25,7 +25,7 @@ $submenu = "Tambah Informasi";
                                 {{ $submenu }}
                             </div>
                             <div class="card-body">
-                                <form class="needs-validation" novalidate action="{{ route('PostAddInformation') }}" enctype="multipart/form-data" method="POST" onSubmit="return capture();">
+                                <form class="needs-validation" novalidate action="{{ Auth::user()->id_level == 1 ? route('AdminPostAddInformation') : route('PostAddInformation') }}" enctype="multipart/form-data" method="POST" onSubmit="return capture();">
                                     @csrf
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
